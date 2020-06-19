@@ -12,6 +12,7 @@ public class QuickSort {
 
 	public static void quickSort(int[] arr, int l, int r) {
 		if (l < r) {
+			// 随机快排，一般快排可以删去这行
 			swap(arr, l + (int) (Math.random() * (r - l + 1)), r);
 			// 将最后一个数放入位置
 			int[] p = partition(arr, l, r);
@@ -22,10 +23,13 @@ public class QuickSort {
 		}
 	}
 
+	// 也可以用荷兰国旗
 	public static int[] partition(int[] arr, int l, int r) {
 		// 比arr最后一个数小的区域的指针，一开始为0，所以为l-1
 		int less = l - 1;
 		// 表示大于最后一个数的指针
+		// 因为需要让最后一个数不参与递归，虽然more里有了最后一个，但其实不在
+		// 后面的会将最后一个与more最边缘的位置进行替换
 		int more = r;
 		// 两个指针不重合
 		// l表示指向当前指针
@@ -49,7 +53,7 @@ public class QuickSort {
 			}
 		}
 		// 把最后面的放中间
-		// 因为more最外围的数也是大于最后面的数，所以替换不影响
+		// 因为more最外围的数也是大于最后面的数，而最后面的应该放入中间，所以替换
 		swap(arr, more, r);
 		// 返回数组，第一个为等于区域左边界， 第二个为等于区域右边界
 		return new int[] { less + 1, more };
