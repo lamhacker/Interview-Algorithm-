@@ -52,7 +52,7 @@ public class GetMinStack {
 
 		// min为空直接加入新数据
 		// 新加的数小于min， 把新加的数放入min栈中
-		// 新加的数大于等于min， 弹出min栈的栈顶，然后压进去
+		// 新加的数大于等于min， 弹出min栈的栈顶，然后压进去，这部分的原因是要和另一个stack保持一致，否则pop就会不一致
 		// 最后将数据压入原始stack
 		public void push(int newNum) {
 			if (this.stackMin.isEmpty()) {
